@@ -1,0 +1,115 @@
+/* General footer styling */
+.footer {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Brand section */
+  .footer-brand {
+    text-align: left;
+  }
+  
+  .footer-brand h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .footer-brand p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  /* Newsletter section */
+  .footer-newsletter {
+    text-align: center;
+  }
+  
+  .footer-newsletter h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .newsletter-form input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
+  }
+  
+  .subscribe-btn {
+    background-color: #ff527b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .subscribe-btn:hover {
+    background-color: #ff2a5a;
+  }
+  
+  /* Links section */
+  .footer-links {
+    display: flex;
+  }
+  
+  .footer-links h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Social Media Icons */
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .social-icon {
+    width: 25px;
+    height: 25px;
+    fill: #333; /* This sets the color of your SVG */
+    cursor: pointer;
+    transition: fill 0.3s;
+  }
+  
+  .social-icon:hover {
+    fill: #00bfa6; /* Change color on hover */
+  }
+  

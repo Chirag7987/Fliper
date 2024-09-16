@@ -1,0 +1,108 @@
+/* General Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the SVG logo */
+.logo-svg {
+    width: 150px;  /* Adjust the size according to your design */
+    height: auto;
+  }
+  
+  /* Logo Styling */
+  .navbar-logo a {
+    color: #00bfa6;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Navigation Links */
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+  }
+  
+  .navbar-links li {
+    display: inline;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #00bfa6;
+  }
+  
+  /* Authentication Buttons */
+  .navbar-auth {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .login-btn,
+  .register-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Login Button */
+  .login-btn {
+    color: #00bfa6;
+    border: 2px solid #00bfa6;
+  }
+  
+  .login-btn:hover {
+    background-color: #00bfa6;
+    color: white;
+  }
+  
+  /* Register Button */
+  .register-btn {
+    background-color: #ff527b;
+    color: white;
+    border: none;
+  }
+  
+  .register-btn:hover {
+    background-color: #ff2a5a;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 10px 20px;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .navbar-auth {
+      margin-top: 10px;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .login-btn,
+    .register-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
