@@ -3,7 +3,8 @@ import axios from 'axios';
 import './Login.css';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  // Change 'username' to 'email'
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -35,9 +36,23 @@ const Login = () => {
   return (
     <div className="login">
       <h1>Admin Login</h1>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        {/* Changed 'username' to 'email' */}
+        <input 
+          type="text" 
+          name="email" 
+          placeholder="Email" 
+          onChange={handleChange} 
+          value={credentials.email} 
+        />
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          onChange={handleChange} 
+          value={credentials.password} 
+        />
         <button type="submit">Login</button>
       </form>
     </div>

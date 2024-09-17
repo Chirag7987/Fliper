@@ -1,41 +1,66 @@
-const Admin = require('../models/Admin.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User'); // Make sure to define your User model
+const { validationResult } = require('express-validator');
 
-// Register admin
+// Register function
 exports.register = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
+
   try {
-    let admin = await Admin.findOne({ email });
-    if (admin) {
-      return res.status(400).json({ msg: 'Admin already exists' });
+    // Check if the user already exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists' });
     }
-    admin = new Admin({ email, password });
-    await admin.save();
-    res.status(201).json({ msg: 'Admin registered' });
-  } catch (err) {
+
+    // Create a new user instance
+    user = new User({
+      name,
+      email,
+      password: await bcrypt.hash(password, 10) // Hash the password with bcrypt
+    });
+
+    // Save the user in the database
+    await user.save();
+
+    // Generate JWT
+    const payload = { user: { id: user.id } };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    // Return the token
+    res.json({ token });
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send('Server error');
   }
 };
 
-// Admin login
+// Login function
 exports.login = async (req, res) => {
   const { email, password } = req.body;
+
   try {
-    let admin = await Admin.findOne({ email });
-    if (!admin) {
+    // Check if user exists
+    let user = await User.findOne({ email });
+    if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-    const isMatch = await bcrypt.compare(password, admin.password);
+
+    // Check the password
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-    const payload = { admin: { id: admin.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: '5h'
-    });
+
+    // Generate JWT
+    const payload = { user: { id: user.id } };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    // Return the token
     res.json({ token });
-  } catch (err) {
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send('Server error');
   }
 };
