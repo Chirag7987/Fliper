@@ -35,10 +35,11 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1>Admin Login</h1>
+      
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         {/* Changed 'username' to 'email' */}
+        <h1>Admin Login</h1>
         <input 
           type="text" 
           name="email" 
